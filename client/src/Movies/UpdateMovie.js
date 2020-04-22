@@ -38,6 +38,9 @@ const UpdateMovie = (props) => {
       [ev.target.name]: value,
     });
   };
+  const changeTextarea = (e) => {
+    console.log(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,21 +78,30 @@ const UpdateMovie = (props) => {
         <input
           type="number"
           name="metascore"
-          onChange={changeHandler}
+          //onChange={changeHandler}
           placeholder="metascore"
           value={item.metascore}
         />
         <div className="baseline" />
-
         <textarea
           rows="4"
           cols="50"
-          name="starts"
-          onChange={changeHandler}
+          name="stars"
           placeholder="starts"
-          value={item.stars}
-        ></textarea>
+          textarea="1000"
+          onChange={changeTextarea}
+          value={item.stars.toString()}
+        />
         <div className="baseline" />
+        {/* {item.stars.map((person) => (
+            <input
+            type="text"
+            name={person}
+            onChange={changeHandler}
+            placeholder="stars"
+            value={person}
+            />
+        ))} */}
 
         <button onClick={handleSubmit}>Done</button>
       </form>
