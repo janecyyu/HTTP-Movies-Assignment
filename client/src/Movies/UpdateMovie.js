@@ -39,13 +39,6 @@ const UpdateMovie = (props) => {
       [ev.target.name]: value,
     });
   };
-  const handleChange = (e) => {
-    e.persist();
-    setItem({
-      ...item,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,8 +54,8 @@ const UpdateMovie = (props) => {
 
   return (
     <>
-      <div>
-        <h2>Update Item</h2>
+      <div className="form-wrapper">
+        <h2>Update Movie</h2>
         <form>
           <input
             type="text"
@@ -97,7 +90,7 @@ const UpdateMovie = (props) => {
             value={item.stars}
           />
           <div className="baseline" />
-          <button onClick={handleSubmit}>Done</button>
+          <button className="done-button" onClick={handleSubmit}>Done</button>
         </form>
       </div>
     </>

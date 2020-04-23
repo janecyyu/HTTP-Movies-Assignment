@@ -6,7 +6,7 @@ body {
 }
 
 .movie-card {
-  background-color: #fff;
+  background-color: rgb(235, 254, 225);
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
@@ -14,6 +14,7 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  width: 95%;
 }
 
 .movie-director {
@@ -50,7 +51,7 @@ body {
 }
 .save-wrapper {
   position: relative;
-  width: 75%;
+  width: 90%;
   margin: 1rem auto;
 }
 .save-button {
@@ -60,10 +61,13 @@ body {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  width: 60px;
+  text-align: center;
 }
 .save-button:hover {
   background-color: green;
   color: white;
+  cursor: pointer;
 }
 
 .home-button {
@@ -74,4 +78,65 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+.update-button{
+  background-color: rgb(245, 157, 172);
+  position: absolute;
+  top: 70px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  width: 60px;
+  text-align: center;
+}
+.update-button:hover {
+  background-color: rgb(255, 135, 155);
+  color: white;
+  cursor: pointer;
+}
+.delete-button{
+  background-color: rgb(198, 144, 237);
+  position: absolute;
+  top: 115px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  width: 60px;
+  text-align: center;
+}
+.delete-button:hover {
+  background-color: rgb(171, 75, 240);
+  color: white;
+  cursor: pointer;
+}
+
+.form-wrapper{
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  justify-content: center;
+  align-items: center;
+}
+
+input, textarea{
+  text-align: center;
+  font-size: 1rem;
+  height: 2rem;
+  width:  450px;
+}
+
+textarea{
+  height: 5rem;
+}
+.done-button{
+  background-color: rgb(226, 29, 29);
+  width: 100%;
+  color: white;
+  height: 1.5rem;
+  font-size: .8rem;
+}
+
+.done-button:hover{
+  background-color: rgb(155, 0, 0);
+  cursor: pointer;
 }

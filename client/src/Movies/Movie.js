@@ -47,7 +47,6 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
   return (
     <div className="save-wrapper">
       <MovieCard movie={movie} />
-
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
@@ -57,7 +56,7 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
       >
         Update
       </div>
-      <div className="update-button" onClick={deleteItem}>
+      <div className="delete-button" onClick={deleteItem}>
         Delete
       </div>
     </div>
