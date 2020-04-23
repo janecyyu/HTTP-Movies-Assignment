@@ -29,8 +29,9 @@ const UpdateMovie = (props) => {
   const changeHandler = (ev) => {
     ev.persist();
     let value = ev.target.value;
-    if (ev.target.name === "metascore") {
-      value = parseInt(value, 10);
+
+    if (ev.target.name === "stars") {
+      value = value.split(",");
     }
 
     setItem({
@@ -38,8 +39,12 @@ const UpdateMovie = (props) => {
       [ev.target.name]: value,
     });
   };
-  const changeTextarea = (e) => {
-    console.log(e.target.value);
+  const handleChange = (e) => {
+    e.persist();
+    setItem({
+      ...item,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -47,65 +52,55 @@ const UpdateMovie = (props) => {
     axios
       .put(`http://localhost:5000/api/movies/${id}`, item)
       .then((res) => {
-        //console.log(props);
-        props.setMovieList(res.data);
+        props.setMovieList([...props.movieList], res.data);
+        //console.log(props.movieList);
         push(`/movies/${id}`);
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <div>
-      <h2>Update Item</h2>
-      <form>
-        <input
-          type="text"
-          name="title"
-          onChange={changeHandler}
-          placeholder="title"
-          value={item.title}
-        />
-        <div className="baseline" />
-        <input
-          type="text"
-          name="director"
-          onChange={changeHandler}
-          placeholder="director"
-          value={item.director}
-        />
-        <div className="baseline" />
-
-        <input
-          type="number"
-          name="metascore"
-          //onChange={changeHandler}
-          placeholder="metascore"
-          value={item.metascore}
-        />
-        <div className="baseline" />
-        <textarea
-          rows="4"
-          cols="50"
-          name="stars"
-          placeholder="starts"
-          textarea="1000"
-          onChange={changeTextarea}
-          value={item.stars.toString()}
-        />
-        <div className="baseline" />
-        {/* {item.stars.map((person) => (
-            <input
+    <>
+      <div>
+        <h2>Update Item</h2>
+        <form>
+          <input
             type="text"
-            name={person}
+            name="title"
             onChange={changeHandler}
-            placeholder="stars"
-            value={person}
-            />
-        ))} */}
+            placeholder="title"
+            value={item.title}
+          />
+          <div className="baseline" />
+          <input
+            type="text"
+            name="director"
+            onChange={changeHandler}
+            placeholder="director"
+            value={item.director}
+          />
+          <div className="baseline" />
 
-        <button onClick={handleSubmit}>Done</button>
-      </form>
-    </div>
+          <input
+            type="number"
+            name="metascore"
+            onChange={changeHandler}
+            placeholder="metascore"
+            value={item.metascore}
+          />
+          <div className="baseline" />
+          <textarea
+            type="text"
+            name="stars"
+            onChange={changeHandler}
+            placeholder="Stars"
+            value={item.stars}
+          />
+          <div className="baseline" />
+          <button onClick={handleSubmit}>Done</button>
+        </form>
+      </div>
+    </>
   );
 };
 

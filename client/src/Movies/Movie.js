@@ -14,7 +14,8 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
     axios
       .delete(`http://localhost:5000/api/movies/${params.id}`)
       .then((res) => {
-        //console.log(res);
+        console.log("m:",movieList.id);
+        console.log("m:",res.data);
         const newItems = movieList.filter(v => v.id !== res.data);
         setMovieList(newItems);
         console.log("newItems",newItems)
@@ -52,7 +53,7 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
       </div>
       <div
         className="update-button"
-        onClick={() => push(`/update-movie/${params.id}`)}
+        onClick={() => push(`/update-movie/${movie.id}`)}
       >
         Update
       </div>
